@@ -11,8 +11,8 @@ const CategoryBox = ({ label, icon: Icon }) => {
           border-b-2
           hover:text-neutral-800
           transition
+          duration-500
           cursor-pointer
-         
         `}
         >
             <Icon size={26} />
