@@ -3,6 +3,7 @@ import { toast } from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { TbFidgetSpinner } from "react-icons/tb";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { saveUser } from '../../api/auth';
 import { AuthContext } from '../../providers/AuthProvider';
 
 const Login = () => {
@@ -26,10 +27,11 @@ const Login = () => {
         console.log(email, password)
 
         signIn(email, password)
-            .then(() => {
+            .then((result) => {
                 setIsLoading(false)
                 toast.success('Login successful')
                 navigate(from, { replace: true })
+                saveUser(result.user)
             })
             .catch(error => {
                 setIsLoading(false)
@@ -45,6 +47,7 @@ const Login = () => {
                 setIsLoading(false)
                 toast.success('Login successful')
                 navigate(from, { replace: true })
+                saveUser(result.user)
             })
             .catch(error => {
                 setIsLoading(false)
